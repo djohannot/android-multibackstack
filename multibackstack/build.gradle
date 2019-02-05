@@ -1,14 +1,27 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 dependencies {
-  implementation rootProject.ext.supportAppCompat
+    implementation rootProject.ext.supportAppCompat
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 android {
-  compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
-  defaultConfig {
-    minSdkVersion 9
-  }
+    defaultConfig {
+        minSdkVersion 9
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+androidExtensions {
+    experimental = true
+}
+repositories {
+    mavenCentral()
 }
