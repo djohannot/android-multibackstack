@@ -61,13 +61,13 @@ class BackStackManager(private val backStacks: LinkedList<BackStack> = LinkedLis
         return backStack?.size() ?: 0
     }
 
-    internal fun resetToRoot(hostId: Int): Boolean {
+    fun resetToRoot(hostId: Int): Boolean {
         val backStack = getBackStack(hostId) ?: return false
         resetToRoot(backStack)
         return true
     }
 
-    internal fun resetToRoot(backStack: BackStack) {
+    fun resetToRoot(backStack: BackStack) {
         while (true) {
             val entry = backStack.pop()!!
             if (backStack.empty()) {
